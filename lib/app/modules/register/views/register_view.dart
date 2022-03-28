@@ -142,6 +142,7 @@ class RegisterView extends GetView<RegisterController> {
                         buttonText: 'Registrarme',
                         isLoading: controller.isLoading,
                         onPressed: controller.register,
+                        isActive: true.obs,
                       ),
                       const Spacer(),
                     ],

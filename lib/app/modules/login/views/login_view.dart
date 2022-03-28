@@ -98,6 +98,7 @@ class LoginView extends GetView<LoginController> {
                         buttonText: 'Iniciar sesión',
                         isLoading: controller.isLoading,
                         onPressed: controller.login,
+                        isActive: true.obs,
                       ),
                       const Spacer(),
                     ],
@@ -165,7 +166,6 @@ class _PasswordInput extends StatelessWidget {
                         'Tu contaseña es el número de cédula que ingresaste al momento de tu registro.',
                     helperStyle: TextStyle(
                       color: Colors.white,
-                      
                     ),
                     enabledBorder: roundedTextField,
                     focusedBorder: roundedTextField,

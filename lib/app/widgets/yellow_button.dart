@@ -11,6 +11,7 @@ class YellowButton extends StatelessWidget {
     required this.onPressed,
     this.icon,
     this.width,
+    required this.isActive,
   }) : super(key: key);
 
   RxBool isLoading;
@@ -18,6 +19,8 @@ class YellowButton extends StatelessWidget {
   Icon? icon;
   void Function() onPressed;
   double? width;
+  RxBool isActive;
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +63,7 @@ class YellowButton extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-          color: Palette.yellow,
+          color: isActive.value ?Palette.yellow: Colors.grey,
           elevation: 1,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(60)),
