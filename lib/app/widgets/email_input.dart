@@ -86,7 +86,7 @@ class LizitEmailInput extends StatelessWidget {
                   if (controller.text.isEmpty) {
                     return 'Por favor, rellena este campo';
                   } else if (!emailRegExp.hasMatch(controller.text)) {
-                    return 'Ingresa un email válido';
+                    return 'Por favor, ingresa un email válido';
                   } else {
                     return null;
                   }

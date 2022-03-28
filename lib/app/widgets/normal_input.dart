@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../utils/utils.dart';
@@ -13,6 +14,8 @@ class NormalInput extends StatelessWidget {
     this.textStyle,
     this.width,
     required this.title,
+    this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   String hintText;
@@ -22,6 +25,8 @@ class NormalInput extends StatelessWidget {
   InputBorder? border;
   TextStyle? textStyle;
   double? width;
+  String? Function(String?)? validator;
+  List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +63,7 @@ class NormalInput extends StatelessWidget {
               width: width ?? Get.width - 100,
               child: TextFormField(
                 style: textStyle,
+                inputFormatters: inputFormatters??[],
                 decoration: InputDecoration(
                   fillColor: Colors.white,
 
@@ -74,13 +80,14 @@ class NormalInput extends StatelessWidget {
                   focusedErrorBorder: roundedTextField,
                 ),
                 controller: controller,
-                validator: (String? _) {
-                  if (controller.text.isEmpty) {
-                    return 'Por favor, rellena este campo';
-                  } else {
-                    return null;
-                  }
-                },
+                validator: validator ??
+                    (String? _) {
+                      if (controller.text.isEmpty) {
+                        return 'Por favor, rellena este campo';
+                      } else {
+                        return null;
+                      }
+                    },
                 keyboardType: TextInputType.emailAddress,
               ),
             ),

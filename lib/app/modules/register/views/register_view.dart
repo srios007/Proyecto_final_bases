@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
 import 'package:proyecto_final_bases/app/utils/utils.dart';
 import 'package:proyecto_final_bases/app/widgets/yellow_button.dart';
 import 'package:proyecto_final_bases/app/widgets/email_input.dart';
 import 'package:proyecto_final_bases/app/widgets/normal_input.dart';
-
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -43,75 +41,86 @@ class RegisterView extends GetView<RegisterController> {
                 width: Get.width * 0.5,
                 height: Get.height,
                 color: Colors.black.withOpacity(0.6),
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    const SizedBox(height: 30),
-                    Text(
-                      '¡Regístrate!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
+                child: Form(
+                  key: controller.key,
+                  child: Column(
+                    children: [
+                      const Spacer(),
+                      const SizedBox(height: 30),
+                      Text(
+                        '¡Regístrate!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 50),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 80),
-                      child: LizitEmailInput(
-                        title: 'Correo electrónico',
-                        hintText: 'moduloTeatro@correo.com',
-                        controller: controller.emailController,
+                      const SizedBox(height: 50),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 80),
+                        child: LizitEmailInput(
+                          title: 'Correo electrónico',
+                          hintText: 'moduloTeatro@correo.com',
+                          controller: controller.emailController,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 80),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          NormalInput(
-                            title: 'Nombre',
-                            hintText: 'Santiago',
-                            width: Get.width * 0.2,
-                            controller: controller.emailController,
-                          ),
-                          NormalInput(
-                            title: 'Apellido',
-                            hintText: 'Caro',
-                            width: Get.width * 0.2,
-                            controller: controller.emailController,
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 80, vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            NormalInput(
+                              title: 'Nombre',
+                              hintText: 'Santiago',
+                              width: Get.width * 0.2,
+                              controller: controller.nameController,
+                            ),
+                            NormalInput(
+                              title: 'Apellido',
+                              hintText: 'Caro',
+                              width: Get.width * 0.2,
+                              controller: controller.lastNameController,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 80),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          NormalInput(
-                            title: 'Documento',
-                            hintText: '123456',
-                            width: Get.width * 0.2,
-                            controller: controller.emailController,
-                          ),
-                          NormalInput(
-                            title: 'Celular',
-                            hintText: '654321',
-                            width: Get.width * 0.2,
-                            controller: controller.emailController,
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 80),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            NormalInput(
+                              title: 'Documento',
+                              hintText: '10101010',
+                              width: Get.width * 0.2,
+                              controller: controller.idController,
+                              validator: controller.validteId,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                            ),
+                            NormalInput(
+                              title: 'Celular',
+                              hintText: '3214567890',
+                              width: Get.width * 0.2,
+                              controller: controller.phoneNumberController,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 50),
-                    YellowButton(
-                      buttonText: 'Registrarme',
-                      isLoading: false.obs,
-                      onPressed: () {},
-                    ),
-                    const Spacer(),
-                  ],
+                      const SizedBox(height: 50),
+                      YellowButton(
+                        buttonText: 'Registrarme',
+                        isLoading: controller.isLoading,
+                        onPressed: controller.goToHome,
+                      ),
+                      const Spacer(),
+                    ],
+                  ),
                 ),
               ),
             ],
