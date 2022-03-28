@@ -60,13 +60,13 @@ class LizitEmailInput extends StatelessWidget {
                 style: textStyle,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
-
                   helperText: helperText,
                   hintText: hintText,
                   hintStyle: TextStyle(
                     color: Palette.darkBlue.withOpacity(0.4),
                     fontWeight: FontWeight.bold,
                   ),
+                  
                   // errorStyle: styles.errorStyle,
                   enabledBorder: roundedTextField,
                   focusedBorder: roundedTextField,

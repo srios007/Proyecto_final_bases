@@ -31,6 +31,8 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+      transition: Transition.noTransition,
+
     ),
   ];
 }

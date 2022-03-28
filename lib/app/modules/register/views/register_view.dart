@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -112,11 +113,35 @@ class RegisterView extends GetView<RegisterController> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 40),
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: '¿Ya tienes una cuenta?  ',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Inicia sesión',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = controller.goToLogin,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
                       YellowButton(
                         buttonText: 'Registrarme',
                         isLoading: controller.isLoading,
-                        onPressed: controller.goToHome,
+                        onPressed: controller.register,
                       ),
                       const Spacer(),
                     ],
