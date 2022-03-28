@@ -1,39 +1,43 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:proyecto_final_bases/app/routes/app_pages.dart';
-
+import 'package:proyecto_final_bases/app/utils/utils.dart';
+import 'package:proyecto_final_bases/app/widgets/tab_bar_contents.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.zero,
+        child: AppBar(),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              'HomeView is working',
-              style: TextStyle(fontSize: 20),
+      body: Stack(
+        children: [
+          Container(
+            width: Get.width,
+            height: Get.height,
+            child: Image.asset(
+              imageReferences.backgroundLogin,
+              fit: BoxFit.fill,
             ),
-            CupertinoButton(
-              child: Container(
-                height: 100,
-                width: 400,
-                color: Colors.black,
+          ),
+          Center(
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              color: Colors.black.withOpacity(0.8),
+              // child: Image.asset(
+              //   imageReferences.logo,
+              // ),
+              child: Column(
+                children: [
+                  TopBarContents(),
+                ],
               ),
-              onPressed: () {
-                Get.toNamed(Routes.REGISTER,);
-                
-              },
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

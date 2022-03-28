@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:proyecto_final_bases/app/utils/utils.dart';
 import 'package:proyecto_final_bases/app/widgets/email_input.dart';
 import 'package:proyecto_final_bases/app/widgets/yellow_button.dart';
-
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -163,7 +162,7 @@ class _PasswordInput extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     helperText:
-                        'Tu contaseña es el número de cédula que ingresaste al momento de tu registro',
+                        'Tu contaseña es el número de cédula que ingresaste al momento de tu registro.',
                     helperStyle: TextStyle(
                       color: Colors.white,
                       
