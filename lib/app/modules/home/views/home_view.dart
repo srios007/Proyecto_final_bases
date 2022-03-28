@@ -33,6 +33,49 @@ class HomeView extends GetView<HomeController> {
               child: Column(
                 children: [
                   TopBarContents(),
+                  Container(
+                    height: Get.height - 80,
+                    width: Get.width,
+                    color: Colors.white.withOpacity(0.6),
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Text(
+                          'Bienvenido al Módulo de administración de Teatros',
+                          style: TextStyle(
+                            fontSize: 48,
+                            color: Palette.darkBlue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          width: 500,
+                          height: 500,
+                          child: Image.asset(
+                            imageReferences.home,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        Text(
+                          'Te ayudaremos a administrarlos.',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Palette.darkBlue.withOpacity(0.7),
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          'Prueba nuestras grandes funcionalidades',
+                          style: TextStyle(
+                            fontSize: 35,
+                            color: Palette.darkBlue,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -42,3 +85,4 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+
