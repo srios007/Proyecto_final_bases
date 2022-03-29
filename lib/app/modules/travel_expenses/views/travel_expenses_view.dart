@@ -32,50 +32,52 @@ class TravelExpensesView extends GetView<TravelExpensesController> {
               // child: Image.asset(
               //   imageReferences.logo,
               // ),
-              child: Column(
-                children: [
-                  TopBarContents(),
-                  Container(
-                    height: Get.height - 80,
-                    child: controller.condition.value
-                        ? Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 80,
-                                    width: Get.width,
-                                    color: Colors.black.withOpacity(0.6),
-                                    child: Center(
-                                      child: Text(
-                                        'Obra de teatro ',
-                                        style: TextStyle(
-                                          fontSize: 48,
-                                          color: controller.firstPlay.value
-                                              ? Colors.white
-                                              : Colors.grey,
-                                          fontWeight: FontWeight.bold,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TopBarContents(),
+                    Container(
+                      height: Get.height - 80,
+                      child: controller.condition.value
+                          ? Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width: Get.width,
+                                      color: Colors.black.withOpacity(0.6),
+                                      child: Center(
+                                        child: Text(
+                                          'Obra de teatro ',
+                                          style: TextStyle(
+                                            fontSize: 48,
+                                            color: controller.firstPlay.value
+                                                ? Colors.white
+                                                : Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Center(
-                                child: Container(
-                                  width: Get.width,
-                                  height: Get.height - 160,
-                                  color: Colors.white.withOpacity(0.9),
-                                  child: StudentsListView(
-                                    controller: controller,
-                                  ),
+                                  ],
                                 ),
-                              )
-                            ],
-                          )
-                        : NoAccesScreen(),
-                  )
-                ],
+                                Center(
+                                  child: Container(
+                                    width: Get.width,
+                                    height: Get.height - 160,
+                                    color: Colors.white.withOpacity(0.9),
+                                    child: StudentsListView(
+                                      controller: controller,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          : NoAccesScreen(),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -282,22 +284,30 @@ class StudentsListView extends StatelessWidget {
                     },
                   ),
                 ),
-                Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Spacer(),
-                    YellowButton(
-                      width: Get.width * 0.4,
-                      buttonText: 'Generar liquidación',
-                      isLoading: controller.isLoading,
-                      onPressed: () {},
-                      isActive: true.obs,
+                Expanded(
+                  child: Container(
+                    color: Palette.lightGray,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            color: Palette.lightGray,
+                            child: Center(
+                              child: YellowButton(
+                                width: Get.width * 0.4,
+                                buttonText: 'Generar liquidación',
+                                isLoading: controller.isLoading,
+                                onPressed:controller.generateLiquidation,
+                                isActive: true.obs,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Spacer(),
-                  ],
+                  ),
                 ),
-                Spacer(),
               ],
             ),
     );

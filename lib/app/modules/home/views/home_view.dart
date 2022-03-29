@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Spacer(),
                         Text(
-                          'Bienvenido al Módulo de administración de Teatros',
+                          'Bienvenido al Módulo de Administración de Teatros',
                           style: TextStyle(
                             fontSize: 48,
                             color: Palette.darkBlue,

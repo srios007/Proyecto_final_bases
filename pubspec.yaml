@@ -36,6 +36,14 @@ dependencies:
   mailer: ^5.1.0
   smtpd: ^0.2.0
   http: ^0.13.4
+  pdf: ^3.7.3
+  syncfusion_flutter_pdf: ^19.4.56-beta
+  universal_html: ^2.0.8
+  flutter_pdfview: ^1.2.1
+  google_fonts: ^2.0.0
+  printing: ^5.7.4
+  universal_io: ^2.0.4
+  
 
 dev_dependencies:
   flutter_lints: ^1.0.0
