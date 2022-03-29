@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 ///
 
 class CustomDialogs {
-  showMessageDialog(message, context, hasloading) {
+  showMessageDialog( context, message,hasloading) {
     showDialog<void>(
       context: context,
       barrierDismissible: false,

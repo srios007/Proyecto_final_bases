@@ -298,7 +298,14 @@ class StudentsListView extends StatelessWidget {
                                 width: Get.width * 0.4,
                                 buttonText: 'Generar liquidación',
                                 isLoading: controller.isLoading,
-                                onPressed:controller.generateLiquidation,
+                                onPressed: () {
+                                  controller.generateLiquidation();
+                                  customDialogs.showMessageDialog(
+                                    Get.context,
+                                    "¡Listo!, tu pdf fue generdo con éxito",
+                                    "Tu pdf fue generdo con éxito",
+                                  );
+                                },
                                 isActive: true.obs,
                               ),
                             ),

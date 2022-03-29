@@ -12,6 +12,7 @@ import 'package:proyecto_final_bases/app/models/student.dart';
 // import 'package:proyecto_final_bases/app/widgets/snackbars.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:proyecto_final_bases/app/utils/utils.dart';
 
 class TravelExpensesController extends GetxController {
   File? file;
@@ -96,10 +97,7 @@ class TravelExpensesController extends GetxController {
   }
 
   generateLiquidation() async {
-    // String messageUser = 'EL USUARIO:';
-    // sendGridService.sendGridEmail(messageUser, "Prueba");
     await generatePDF();
-    // Get.toNamed(Routes.PDF);
   }
 
   generatePDF() async {
@@ -117,9 +115,9 @@ class TravelExpensesController extends GetxController {
                 'Decanatura de la Facultad de Artes\n\n\n'
                 'Liquidación de viáticos de los estudiantes de la obra\n\n\n'
                 'Titulo de la Obra,\n'
-                ' Fecha inicio:  \n'
+                'Fecha inicio:  \n'
                 'Fecha fin:\n'
-                ' Cuerpo: la lista de estudiantes (nombres completos y cédulas, correos y'
+                'Cuerpo: la lista de estudiantes (nombres completos y cédulas, correos y'
                 'códigos) con su correspondiente número de sesiones y horas en las que'
                 'participó y el período de tiempo en que participó\n\n\n'
                 'Firma El nombre completo del docente, la cédula y la facultad a la'
@@ -150,5 +148,6 @@ class TravelExpensesController extends GetxController {
       ..download = 'Liquidacion.pdf';
     html.document.body!.children.add(anchor);
     anchor.click();
+      
   }
 }
