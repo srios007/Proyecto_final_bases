@@ -41,26 +41,22 @@ class TravelExpensesView extends GetView<TravelExpensesController> {
                       child: controller.condition.value
                           ? Column(
                               children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 80,
-                                      width: Get.width,
-                                      color: Colors.black.withOpacity(0.6),
-                                      child: Center(
-                                        child: Text(
-                                          'Obra de teatro ',
-                                          style: TextStyle(
-                                            fontSize: 48,
-                                            color: controller.firstPlay.value
-                                                ? Colors.white
-                                                : Colors.grey,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
+                                Container(
+                                  height: 80,
+                                  width: Get.width,
+                                  color: Colors.black.withOpacity(0.6),
+                                  child: Center(
+                                    child: Text(
+                                      'Obra de teatro ',
+                                      style: TextStyle(
+                                        fontSize: 48,
+                                        color: controller.firstPlay.value
+                                            ? Colors.white
+                                            : Colors.grey,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 Center(
                                   child: Container(

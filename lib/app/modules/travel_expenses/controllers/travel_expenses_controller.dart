@@ -1,35 +1,47 @@
-import 'dart:html';
 import 'dart:typed_data';
 import 'dart:html' as html;
-import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
-// import 'package:mailer/mailer.dart' as mailer;
-// import 'package:mailer/smtp_server/gmail.dart' as server;
-// import 'package:proyecto_final_bases/app/routes/app_pages.dart';
-// import 'package:proyecto_final_bases/app/services/send_grid_service.dart';
-// import 'package:proyecto_final_bases/app/widgets/snackbars.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:proyecto_final_bases/app/utils/utils.dart';
 
 class TravelExpensesController extends GetxController {
-  File? file;
   RxBool condition = true.obs;
   RxBool isLoading = false.obs;
   RxBool isActive = false.obs;
   RxBool firstPlay = true.obs;
   List<Student> students = [
     Student(
-        name: 'Santiago', isSelected: false.obs, section: 'sección', hours: 5),
-    Student(name: 'Juan', isSelected: false.obs, section: 'sección1', hours: 2),
+      name: 'Santiago',
+      isSelected: false.obs,
+      section: 'sección',
+      hours: 5,
+    ),
     Student(
-        name: 'Camilo', isSelected: false.obs, section: 'sección2', hours: 3),
+      name: 'Juan',
+      isSelected: false.obs,
+      section: 'sección1',
+      hours: 2,
+    ),
     Student(
-        name: 'Laura', isSelected: false.obs, section: 'sección3', hours: 4),
+      name: 'Camilo',
+      isSelected: false.obs,
+      section: 'sección2',
+      hours: 3,
+    ),
     Student(
-        name: 'María', isSelected: false.obs, section: 'sección4', hours: 7),
+      name: 'Laura',
+      isSelected: false.obs,
+      section: 'sección3',
+      hours: 4,
+    ),
+    Student(
+      name: 'María',
+      isSelected: false.obs,
+      section: 'sección4',
+      hours: 7,
+    ),
     Student(
         name: 'Valentina',
         isSelected: false.obs,
@@ -148,6 +160,5 @@ class TravelExpensesController extends GetxController {
       ..download = 'Liquidacion.pdf';
     html.document.body!.children.add(anchor);
     anchor.click();
-      
   }
 }
