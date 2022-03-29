@@ -9,7 +9,6 @@ abstract class Routes {
   static const ASSISTANCE = _Paths.ASSISTANCE;
   static const TRAVEL_EXPENSES = _Paths.TRAVEL_EXPENSES;
   static const CERTIFICATES = _Paths.CERTIFICATES;
-  static const PDF = _Paths.PDF;
 }
 
 abstract class _Paths {
@@ -20,5 +19,4 @@ abstract class _Paths {
   static const ASSISTANCE = '/assistance';
   static const TRAVEL_EXPENSES = '/travel-expenses';
   static const CERTIFICATES = '/certificates';
-  static const PDF = '/pdf';
 }

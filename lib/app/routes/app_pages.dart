@@ -8,8 +8,6 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/pdf/bindings/pdf_binding.dart';
-import '../modules/pdf/views/pdf_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/travel_expenses/bindings/travel_expenses_binding.dart';
@@ -59,10 +57,6 @@ class AppPages {
       binding: CertificatesBinding(),
       transition: Transition.noTransition,
     ),
-    GetPage(
-      name: _Paths.PDF,
-      page: () => PdfView(),
-      binding: PdfBinding(),
-    ),
+
   ];
 }

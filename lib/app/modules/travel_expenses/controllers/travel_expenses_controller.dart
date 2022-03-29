@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:typed_data';
 import 'dart:html' as html;
+import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
@@ -110,14 +111,26 @@ class TravelExpensesController extends GetxController {
       pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
-          return pw.Center(
-            child: pw.Text(
-              'Hello World',
-              style: pw.TextStyle(
-                font: font,
-                fontSize: 40,
+          return pw.Column(
+            children: [
+              pw.Text(
+                'Decanatura de la Facultad de Artes\n\n\n'
+                'Liquidación de viáticos de los estudiantes de la obra\n\n\n'
+                'Titulo de la Obra,\n'
+                ' Fecha inicio:  \n'
+                'Fecha fin:\n'
+                ' Cuerpo: la lista de estudiantes (nombres completos y cédulas, correos y'
+                'códigos) con su correspondiente número de sesiones y horas en las que'
+                'participó y el período de tiempo en que participó\n\n\n'
+                'Firma El nombre completo del docente, la cédula y la facultad a la'
+                'que pertenece'
+                '• Se coloca la obra como inactiva.',
+                style: pw.TextStyle(
+                  font: font,
+                  fontSize: 20,
+                ),
               ),
-            ),
+            ],
           );
         },
       ),
@@ -134,7 +147,7 @@ class TravelExpensesController extends GetxController {
     final anchor = html.document.createElement('a') as html.AnchorElement
       ..href = url
       ..style.display = 'none'
-      ..download = 'pdf.pdf';
+      ..download = 'Liquidacion.pdf';
     html.document.body!.children.add(anchor);
     anchor.click();
   }
