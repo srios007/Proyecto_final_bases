@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:proyecto_final_bases/app/utils/utils.dart';
 import 'package:proyecto_final_bases/app/widgets/tab_bar_contents.dart';
 import 'package:proyecto_final_bases/app/widgets/yellow_button.dart';
-
 import '../controllers/assistance_controller.dart';
 
 class AssistanceView extends GetView<AssistanceController> {
@@ -40,89 +38,52 @@ class AssistanceView extends GetView<AssistanceController> {
                   Container(
                     height: Get.height - 80,
                     child: controller.condition.value
-                        ? SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Obx(
-                                      () => CupertinoButton(
-                                        onPressed: () {
-                                          controller.choosePlay(true);
-                                        },
-                                        padding: EdgeInsets.zero,
-                                        child: Container(
-                                          height: 80,
-                                          width: Get.width / 2,
-                                          color: Colors.black.withOpacity(0.6),
-                                          child: Center(
-                                            child: Text(
-                                              'Obra de teatro 1',
-                                              style: TextStyle(
-                                                fontSize: 48,
-                                                color:
-                                                    controller.firstPlay.value
-                                                        ? Colors.white
-                                                        : Colors.grey,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
+                        ? Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 80,
+                                    width: Get.width,
+                                    color: Colors.black.withOpacity(0.6),
+                                    child: Center(
+                                      child: Text(
+                                        'Obra de teatro ',
+                                        style: TextStyle(
+                                          fontSize: 48,
+                                          color: controller.firstPlay.value
+                                              ? Colors.white
+                                              : Colors.grey,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
-                                    Obx(
-                                      () => CupertinoButton(
-                                        onPressed: () {
-                                          controller.choosePlay(false);
-                                        },
-                                        padding: EdgeInsets.zero,
-                                        child: Container(
-                                          height: 80,
-                                          width: Get.width / 2,
-                                          color: Colors.black.withOpacity(0.6),
-                                          child: Center(
-                                            child: Text(
-                                              'Obra de teatro 2',
-                                              style: TextStyle(
-                                                fontSize: 48,
-                                                color:
-                                                    !controller.firstPlay.value
-                                                        ? Colors.white
-                                                        : Colors.grey,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Center(
-                                      child: Container(
-                                        width: Get.width * 0.5,
-                                        height: Get.height - 80,
-                                        color: Colors.white.withOpacity(0.9),
-                                        child: StudentsListView(
-                                          controller: controller,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Center(
+                                    child: Container(
                                       width: Get.width * 0.5,
-                                      height: Get.height - 80,
-                                      color: Colors.white.withOpacity(0.6),
-                                      child: SelectedStudentsListView(
+                                      height: Get.height - 160,
+                                      color: Colors.white.withOpacity(0.9),
+                                      child: StudentsListView(
                                         controller: controller,
                                       ),
                                     ),
-                                  ],
-                                )
-                              ],
-                            ),
+                                  ),
+                                  Container(
+                                    width: Get.width * 0.5,
+                                    height: Get.height - 160,
+                                    color: Colors.white.withOpacity(0.6),
+                                    child: SelectedStudentsListView(
+                                      controller: controller,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
                           )
                         : NoAccesScreen(),
                   )
@@ -320,6 +281,7 @@ class SelectedStudentsListView extends StatelessWidget {
               child: CircularProgressIndicator(),
             )
           : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: Get.width,
@@ -329,6 +291,7 @@ class SelectedStudentsListView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Container(
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               margin: EdgeInsets.fromLTRB(
@@ -374,28 +337,21 @@ class SelectedStudentsListView extends StatelessWidget {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                        YellowButton(
-                        width: Get.width * 0.2,
-
-                        buttonText: 'Marcar asistencia',
-                        isLoading: controller.isLoading,
-                        onPressed: () {}, isActive: controller.firstPlay,
-                      ),
-                      YellowButton(
-                        width: Get.width * 0.2,
-                        buttonText: 'Generar liquidación',
-                        isLoading: controller.isLoading,
-                        onPressed: () {}, isActive: controller.isActive,
-                      ),
-                    
-                    ],
-                  ),
-                )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Spacer(),
+                    YellowButton(
+                      width: Get.width * 0.4,
+                      buttonText: 'Marcar asistencia',
+                      isLoading: controller.isLoading,
+                      onPressed: () {},
+                      isActive: true.obs,
+                    ),
+                    Spacer(),
+                  ],
+                ),
+                SizedBox(height: 40),
               ],
             ),
     );
