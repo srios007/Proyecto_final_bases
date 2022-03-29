@@ -288,7 +288,7 @@ class StudentsListView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Container(
-                            color: Palette.lightGray,
+                            color: Palette.yellow.withOpacity(0.2),
                             child: Center(
                               child: YellowButton(
                                 width: Get.width * 0.4,

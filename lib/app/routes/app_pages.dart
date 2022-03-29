@@ -1,17 +1,16 @@
 import 'package:get/get.dart';
-
-import '../modules/assistance/bindings/assistance_binding.dart';
-import '../modules/assistance/views/assistance_view.dart';
-import '../modules/certificates/bindings/certificates_binding.dart';
-import '../modules/certificates/views/certificates_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/login/bindings/login_binding.dart';
-import '../modules/login/views/login_view.dart';
-import '../modules/register/bindings/register_binding.dart';
-import '../modules/register/views/register_view.dart';
-import '../modules/travel_expenses/bindings/travel_expenses_binding.dart';
-import '../modules/travel_expenses/views/travel_expenses_view.dart';
+import '../modules/onboarding/login/bindings/login_binding.dart';
+import '../modules/onboarding/login/views/login_view.dart';
+import '../modules/onboarding/register/bindings/register_binding.dart';
+import '../modules/onboarding/register/views/register_view.dart';
+import '../modules/services/assistance/bindings/assistance_binding.dart';
+import '../modules/services/assistance/views/assistance_view.dart';
+import '../modules/services/certificates/bindings/certificates_binding.dart';
+import '../modules/services/certificates/views/certificates_view.dart';
+import '../modules/services/travel_expenses/bindings/travel_expenses_binding.dart';
+import '../modules/services/travel_expenses/views/travel_expenses_view.dart';
 
 part 'app_routes.dart';
 

@@ -37,7 +37,7 @@ class CertificatesView extends GetView<CertificatesController> {
                 children: [
                   TopBarContents(),
                   Container(
-                    height: Get.height - 80,
+                    height: Get.height - 200,
                     child: controller.condition.value
                         ? Column(
                             children: [
@@ -66,7 +66,7 @@ class CertificatesView extends GetView<CertificatesController> {
                                 children: [
                                   Container(
                                     width: Get.width * 0.5,
-                                    height: Get.height - 160,
+                                    height: Get.height - 280,
                                     color: Colors.white.withOpacity(0.9),
                                     child: PlaysPlayed(
                                       controller: controller,
@@ -74,7 +74,7 @@ class CertificatesView extends GetView<CertificatesController> {
                                   ),
                                   Container(
                                     width: Get.width * 0.5,
-                                    height: Get.height - 160,
+                                    height: Get.height - 280,
                                     color: Colors.white.withOpacity(0.8),
                                     child: StudentsListView(
                                       controller: controller,
@@ -85,7 +85,38 @@ class CertificatesView extends GetView<CertificatesController> {
                             ],
                           )
                         : NoAccesScreen(),
-                  )
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: Palette.lightGray,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: Palette.yellow.withOpacity(0.2),
+                              child: Center(
+                                child: YellowButton(
+                                  width: Get.width * 0.4,
+                                  buttonText: 'Hacer búsqueda especializada',
+                                  isLoading: controller.isLoading,
+                                  onPressed: () {
+                                    controller.generateLiquidation();
+                                    customDialogs.showMessageDialog(
+                                      Get.context,
+                                      "¡Listo!, tu pdf fue generdo con éxito",
+                                      "Tu pdf fue generdo con éxito",
+                                    );
+                                  },
+                                  isActive: true.obs,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -151,7 +182,8 @@ class StudentsListView extends StatelessWidget {
               width: Get.width,
               height: Get.height,
               child: ListView.builder(
-                itemCount: controller.playsList[controller.position.value].students!.length,
+                itemCount: controller
+                    .playsList[controller.position.value].students!.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -188,7 +220,10 @@ class StudentsListView extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     Text(
-                                      controller.playsList[controller.position.value].students![index].name!,
+                                      controller
+                                          .playsList[controller.position.value]
+                                          .students![index]
+                                          .name!,
                                       style: const TextStyle(
                                         color: Palette.darkBlue,
                                         fontSize: 30,
