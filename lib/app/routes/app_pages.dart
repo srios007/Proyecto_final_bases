@@ -10,6 +10,8 @@ import '../modules/services/assistance/views/assistance_view.dart';
 import '../modules/services/certificates/bindings/certificates_binding.dart';
 import '../modules/services/certificates/views/certificates_view.dart';
 import '../modules/services/travel_expenses/bindings/travel_expenses_binding.dart';
+import '../modules/services/travel_expenses/travel_expenses_detail/bindings/travel_expenses_detail_binding.dart';
+import '../modules/services/travel_expenses/travel_expenses_detail/views/travel_expenses_detail_view.dart';
 import '../modules/services/travel_expenses/views/travel_expenses_view.dart';
 
 part 'app_routes.dart';
@@ -56,6 +58,10 @@ class AppPages {
       binding: CertificatesBinding(),
       transition: Transition.noTransition,
     ),
-
+    GetPage(
+      name: _Paths.TRAVEL_EXPENSES_DETAIL,
+      page: () => TravelExpensesDetailView(),
+      binding: TravelExpensesDetailBinding(),
+    ),
   ];
 }
