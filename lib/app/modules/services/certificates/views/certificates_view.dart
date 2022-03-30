@@ -100,14 +100,7 @@ class CertificatesView extends GetView<CertificatesController> {
                                   width: Get.width * 0.4,
                                   buttonText: 'Hacer búsqueda especializada',
                                   isLoading: controller.isLoading,
-                                  onPressed: () {
-                                    controller.generateLiquidation();
-                                    customDialogs.showMessageDialog(
-                                      Get.context,
-                                      "¡Listo!, tu pdf fue generdo con éxito",
-                                      "Tu pdf fue generdo con éxito",
-                                    );
-                                  },
+                                  onPressed: controller.goToDetail,
                                   isActive: true.obs,
                                 ),
                               ),

@@ -9,7 +9,7 @@ abstract class Routes {
   static const ASSISTANCE = _Paths.ASSISTANCE;
   static const TRAVEL_EXPENSES = _Paths.TRAVEL_EXPENSES;
   static const CERTIFICATES = _Paths.CERTIFICATES;
-  static const TRAVEL_EXPENSES_DETAIL = _Paths.TRAVEL_EXPENSES_DETAIL;
+  static const CERTIFICATES_DETAIL = _Paths.CERTIFICATES_DETAIL;
 }
 
 abstract class _Paths {
@@ -20,5 +20,5 @@ abstract class _Paths {
   static const ASSISTANCE = '/assistance';
   static const TRAVEL_EXPENSES = '/travel-expenses';
   static const CERTIFICATES = '/certificates';
-  static const TRAVEL_EXPENSES_DETAIL = '/travel-expenses-detail';
+  static const CERTIFICATES_DETAIL = '/certificates-detail';
 }

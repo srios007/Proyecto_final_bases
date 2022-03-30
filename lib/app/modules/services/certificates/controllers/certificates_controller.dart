@@ -6,6 +6,7 @@ import 'package:proyecto_final_bases/app/models/play.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:proyecto_final_bases/app/routes/app_pages.dart';
 
 class CertificatesController extends GetxController {
   RxBool condition = true.obs;
@@ -141,6 +142,10 @@ class CertificatesController extends GetxController {
 
   generateLiquidation() async {
     await generatePDF();
+  }
+
+  goToDetail() async {
+    Get.toNamed(Routes.CERTIFICATES_DETAIL);
   }
 
   generatePDF() async {
