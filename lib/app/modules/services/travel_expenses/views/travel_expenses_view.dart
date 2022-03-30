@@ -47,7 +47,7 @@ class TravelExpensesView extends GetView<TravelExpensesController> {
                                   color: Colors.black.withOpacity(0.6),
                                   child: Center(
                                     child: Text(
-                                      'Obra de teatro ',
+                                      'El sueño de una noche de verano',
                                       style: TextStyle(
                                         fontSize: 48,
                                         color: controller.firstPlay.value

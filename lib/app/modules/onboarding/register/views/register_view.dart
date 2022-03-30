@@ -58,7 +58,7 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                       const SizedBox(height: 50),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 80),
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: LizitEmailInput(
                           title: 'Correo electrónico',
                           hintText: 'moduloTeatro@correo.com',
@@ -67,7 +67,7 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 80, vertical: 10),
+                            horizontal: 40, vertical: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -87,7 +87,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 80),
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

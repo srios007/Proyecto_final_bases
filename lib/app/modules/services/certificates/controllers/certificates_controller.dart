@@ -16,100 +16,50 @@ class CertificatesController extends GetxController {
   RxInt position = 0.obs;
   List<Play> playsList = [
     Play(
-      playName: 'Obra 1',
+      playName: 'Romeo y Julieta',
       students: [
         Student(
-          name: 'Santiago',
-          isSelected: false.obs,
-          section: 'sección',
-          hours: 5,
-        ),
-        Student(
-          name: 'Juan',
-          isSelected: false.obs,
-          section: 'sección1',
+          id: '1010',
+          email: 'Santiago@gmail.com',
+          name: 'Santiago Rios',
+          section: 'Intro',
+          period: '27-FEB-22 - 05-MAR-22',
+          sessions: 2,
           hours: 2,
-        ),
-        Student(
-          name: 'Santiago4',
           isSelected: false.obs,
-          section: 'sección11',
+          play: 'Romeo y Julieta',
+        ),
+      ],
+    ),
+    Play(
+      playName: 'La Celestina',
+      students: [
+        Student(
+          id: '2124',
+          email: 'jorge@gmail.com',
+          name: 'Jorge Bohórquez',
+          section: 'Intermedio',
+          period: '27-FEB-22 - 05-MAR-22',
+          sessions: 3,
+          hours: 1,
+          isSelected: false.obs,
+          play: 'La Celestina',
+        ),
+      ],
+    ),
+    Play(
+      playName: 'Don Juan Tenorio',
+      students: [
+        Student(
+          id: '3453',
+          email: 'jmostosq@gmail.com',
+          name: 'Juan Manuel Ostos',
+          section: 'Final',
+          period: '27-FEB-22 - 05-MAR-22',
+          sessions: 4,
           hours: 3,
-        ),
-        Student(
-          name: 'Santiago5',
           isSelected: false.obs,
-          section: 'sección12',
-          hours: 2,
-        ),
-      ],
-    ),
-    Play(
-      playName: 'Obra 2',
-      students: [
-        Student(
-          name: 'Santiago3',
-          isSelected: false.obs,
-          section: 'sección10',
-          hours: 4,
-        ),
-        Student(
-          name: 'Camilo',
-          isSelected: false.obs,
-          section: 'sección2',
-          hours: 3,
-        ),
-        Student(
-          name: 'Laura',
-          isSelected: false.obs,
-          section: 'sección3',
-          hours: 4,
-        ),
-        Student(
-          name: 'Santiago2',
-          isSelected: false.obs,
-          section: 'sección9',
-          hours: 13,
-        ),
-      ],
-    ),
-    Play(
-      playName: 'Obra 3',
-      students: [
-        Student(
-          name: 'María',
-          isSelected: false.obs,
-          section: 'sección4',
-          hours: 7,
-        ),
-        Student(
-          name: 'Valentina',
-          isSelected: false.obs,
-          section: 'sección5',
-          hours: 8,
-        ),
-      ],
-    ),
-    Play(
-      playName: 'Obra 4',
-      students: [
-        Student(
-          name: 'Caterina',
-          isSelected: false.obs,
-          section: 'sección6',
-          hours: 10,
-        ),
-        Student(
-          name: 'Giovanni',
-          isSelected: false.obs,
-          section: 'sección7',
-          hours: 14,
-        ),
-        Student(
-          name: 'Santiago1',
-          isSelected: false.obs,
-          section: 'sección8',
-          hours: 21,
+          play: 'Don Juan Tenorio',
         ),
       ],
     ),
@@ -140,15 +90,15 @@ class CertificatesController extends GetxController {
     // }
   }
 
-  generateLiquidation() async {
-    await generatePDF();
+  generateLiquidation(Student student) async {
+    await generatePDF(student);
   }
 
   goToDetail() async {
     Get.toNamed(Routes.CERTIFICATES_DETAIL);
   }
 
-  generatePDF() async {
+  generatePDF(Student student) async {
     final pdf = pw.Document();
 
     final font = await PdfGoogleFonts.nunitoExtraLight();
@@ -161,16 +111,8 @@ class CertificatesController extends GetxController {
             children: [
               pw.Text(
                 'Decanatura de la Facultad de Artes\n\n\n'
-                'Liquidación de viáticos de los estudiantes de la obra\n\n\n'
-                'Titulo de la Obra,\n'
-                'Fecha inicio:  \n'
-                'Fecha fin:\n'
-                'Cuerpo: la lista de estudiantes (nombres completos y cédulas, correos y'
-                'códigos) con su correspondiente número de sesiones y horas en las que'
-                'participó y el período de tiempo en que participó\n\n\n'
-                'Firma El nombre completo del docente, la cédula y la facultad a la'
-                'que pertenece'
-                '• Se coloca la obra como inactiva.',
+                'Certificado de participación\n\n\n'
+                'El estudiante: ${student.name}, participó en la obra: ${student.play}, con un total de horas de: ${student.hours}\n',
                 style: pw.TextStyle(
                   font: font,
                   fontSize: 20,
@@ -193,7 +135,7 @@ class CertificatesController extends GetxController {
     final anchor = html.document.createElement('a') as html.AnchorElement
       ..href = url
       ..style.display = 'none'
-      ..download = 'Liquidacion.pdf';
+      ..download = 'Certificado.pdf';
     html.document.body!.children.add(anchor);
     anchor.click();
   }

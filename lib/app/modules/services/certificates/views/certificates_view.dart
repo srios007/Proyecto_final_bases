@@ -230,7 +230,11 @@ class StudentsListView extends StatelessWidget {
                                   width: 250,
                                   buttonText: 'Generar certificado',
                                   isLoading: false.obs,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.generateLiquidation(controller
+                                        .playsList[controller.position.value]
+                                        .students![index]);
+                                  },
                                   isActive: true.obs,
                                 )
                               ],

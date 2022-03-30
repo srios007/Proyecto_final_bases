@@ -79,7 +79,7 @@ class CertificatesDetailView extends GetView<CertificatesDetailController> {
                                   ),
                                   Obx(
                                     () => _DropdownField(
-                                      title: 'Tipo calle',
+                                      title: 'Obra',
                                       dropdownItems: controller.playsType(),
                                       onChanged: controller.chancgeTypeStreet,
                                       selectedValue: controller.play.value,

@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'dart:html' as html;
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
@@ -13,75 +14,35 @@ class TravelExpensesController extends GetxController {
   RxBool firstPlay = true.obs;
   List<Student> students = [
     Student(
-      name: 'Santiago',
-      isSelected: false.obs,
-      section: 'sección',
-      hours: 5,
-    ),
-    Student(
-      name: 'Juan',
-      isSelected: false.obs,
-      section: 'sección1',
+      id: '1010',
+      email: 'Santiago@gmail.com',
+      name: 'Santiago Rios',
+      section: 'Intro',
+      period: '27-FEB-22 - 05-MAR-22',
+      sessions: 2,
       hours: 2,
+      isSelected: false.obs,
     ),
     Student(
-      name: 'Camilo',
+      id: '2124',
+      email: 'jorge@gmail.com',
+      name: 'Jorge Bohórquez',
+      section: 'Intermedio',
+      period: '27-FEB-22 - 05-MAR-22',
+      sessions: 3,
+      hours: 1,
       isSelected: false.obs,
-      section: 'sección2',
+    ),
+    Student(
+      id: '3453',
+      email: 'jmostosq@gmail.com',
+      name: 'Juan Manuel Ostos',
+      section: 'Final',
+      period: '27-FEB-22 - 05-MAR-22',
+      sessions: 4,
       hours: 3,
-    ),
-    Student(
-      name: 'Laura',
       isSelected: false.obs,
-      section: 'sección3',
-      hours: 4,
     ),
-    Student(
-      name: 'María',
-      isSelected: false.obs,
-      section: 'sección4',
-      hours: 7,
-    ),
-    Student(
-        name: 'Valentina',
-        isSelected: false.obs,
-        section: 'sección5',
-        hours: 8),
-    Student(
-        name: 'Caterina',
-        isSelected: false.obs,
-        section: 'sección6',
-        hours: 10),
-    Student(
-        name: 'Giovanni',
-        isSelected: false.obs,
-        section: 'sección7',
-        hours: 14),
-    Student(
-        name: 'Santiago1',
-        isSelected: false.obs,
-        section: 'sección8',
-        hours: 21),
-    Student(
-        name: 'Santiago2',
-        isSelected: false.obs,
-        section: 'sección9',
-        hours: 13),
-    Student(
-        name: 'Santiago3',
-        isSelected: false.obs,
-        section: 'sección10',
-        hours: 4),
-    Student(
-        name: 'Santiago4',
-        isSelected: false.obs,
-        section: 'sección11',
-        hours: 3),
-    Student(
-        name: 'Santiago5',
-        isSelected: false.obs,
-        section: 'sección12',
-        hours: 2),
   ];
   List<Student> selectedStudents = [];
 
@@ -108,14 +69,23 @@ class TravelExpensesController extends GetxController {
     }
   }
 
+  List<String> names = [];
   generateLiquidation() async {
     await generatePDF();
+  }
+
+  addStudents() async {
+    for (int i = 0; i < students.length; i++) {
+      names.add(
+          'nombre: ${students[i].name}, email: ${students[i].email}, id: ${students[i].id}, # sesiones ${students[i].sessions}');
+    }
   }
 
   generatePDF() async {
     final pdf = pw.Document();
 
     final font = await PdfGoogleFonts.nunitoExtraLight();
+    await addStudents();
 
     pdf.addPage(
       pw.Page(
@@ -125,21 +95,27 @@ class TravelExpensesController extends GetxController {
             children: [
               pw.Text(
                 'Decanatura de la Facultad de Artes\n\n\n'
-                'Liquidación de viáticos de los estudiantes de la obra\n\n\n'
-                'Titulo de la Obra,\n'
-                'Fecha inicio:  \n'
-                'Fecha fin:\n'
+                'Liquidación de viáticos de los estudiantes de la obra de teatro\n\n\n'
+                'Titulo de la Obra: El sueño de una noche de verano\n'
+                'Fecha inicio: 2022-02-26  \n'
+                'Fecha fin: 2022-03-05  \n'
                 'Cuerpo: la lista de estudiantes (nombres completos y cédulas, correos y'
                 'códigos) con su correspondiente número de sesiones y horas en las que'
                 'participó y el período de tiempo en que participó\n\n\n'
-                'Firma El nombre completo del docente, la cédula y la facultad a la'
-                'que pertenece'
-                '• Se coloca la obra como inactiva.',
+                '- ${names[0]}\n'
+                '- ${names[1]}\n'
+                '- ${names[2]}\n'
+                'Santiago Rios, 1010119455, Facultad de ingeniería',
                 style: pw.TextStyle(
                   font: font,
                   fontSize: 20,
                 ),
               ),
+              pw.Column(
+                children: [
+                  pw.Text(''),
+                ],
+              )
             ],
           );
         },
