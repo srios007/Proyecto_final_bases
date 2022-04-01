@@ -47,7 +47,7 @@ class TravelExpensesView extends GetView<TravelExpensesController> {
                                   color: Colors.black.withOpacity(0.6),
                                   child: Center(
                                     child: Text(
-                                      'El sueño de una noche de verano',
+                                      controller.homeController.travel!.items![0].obra!,
                                       style: TextStyle(
                                         fontSize: 48,
                                         color: controller.firstPlay.value
@@ -199,7 +199,7 @@ class StudentsListView extends StatelessWidget {
                   width: Get.width,
                   height: Get.height - 330,
                   child: ListView.builder(
-                    itemCount: controller.students.length,
+                    itemCount: controller.homeController.travel!.items!.length,
                     itemBuilder: (context, index) {
                       return Container(
                         height: 60,
@@ -224,7 +224,8 @@ class StudentsListView extends StatelessWidget {
                               height: 60,
                               child: Center(
                                 child: Text(
-                                  controller.students[index].name!,
+                                  '${controller.homeController.travel!.items![index].nombreestudiante!} ' 
+                                  '${controller.homeController.travel!.items![index].apellidoestudiante!}' ,
                                   style: const TextStyle(
                                     color: Palette.darkBlue,
                                     fontSize: 30,
@@ -244,7 +245,7 @@ class StudentsListView extends StatelessWidget {
                               height: 60,
                               child: Center(
                                 child: Text(
-                                  controller.students[index].section!,
+                                  controller.homeController.travel!.items![index].periodo!,
                                   style: const TextStyle(
                                     color: Palette.darkBlue,
                                     fontSize: 30,
@@ -264,7 +265,7 @@ class StudentsListView extends StatelessWidget {
                               width: (Get.width / 3) - 1,
                               child: Center(
                                 child: Text(
-                                  controller.students[index].hours.toString(),
+                                  controller.homeController.travel!.items![index].horas.toString(),
                                   style: const TextStyle(
                                     color: Palette.darkBlue,
                                     fontSize: 30,

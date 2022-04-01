@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:proyecto_final_bases/app/models/empleado_model.dart';
+import 'package:proyecto_final_bases/app/models/providers/empleado_provider.dart';
 import 'package:proyecto_final_bases/app/routes/app_pages.dart';
 import 'package:proyecto_final_bases/app/services/auth_service.dart';
 import 'package:proyecto_final_bases/app/widgets/snackbars.dart';
@@ -10,6 +12,14 @@ class LoginController extends GetxController {
   final formKeyLogin = GlobalKey<FormState>();
   RxBool isLoading = false.obs;
   RxBool visiblePassword = false.obs;
+  Empleado? empleado = Empleado();
+  Items globalUser = Items();
+
+  @override
+  void onInit() {
+    getEmpleados();
+    super.onInit();
+  }
 
   void showPassword() {
     visiblePassword.value
@@ -32,10 +42,17 @@ class LoginController extends GetxController {
       isLoading.value = true;
 
       try {
+        for (var element in empleado!.items!) {
+          if (element.correoempleado == emailController.text) {
+            globalUser = element;
+          }
+        }
+
         final response = await auth.signIn(
             email: emailController.text, password: passwordController.text);
         if (response is! String) {
           isLoading.value = false;
+
           Get.offAllNamed(
             Routes.HOME,
             // arguments: {'user': user},
@@ -50,13 +67,9 @@ class LoginController extends GetxController {
     }
   }
 
-  // void recoverUser() {
-  //   Get.toNamed(Routes.FORGOT_USER);
-  // }
-
-  // void recoverPassword() {
-  //   Get.toNamed(Routes.FORGOT_PASSWORD);
-  // }
+  getEmpleados() async {
+    empleado = await empleadoProvider.getEmpleados();
+  }
 
   goToRegister() {
     Get.toNamed(Routes.REGISTER);

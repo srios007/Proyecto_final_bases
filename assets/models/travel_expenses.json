@@ -1,0 +1,40 @@
+{
+    "items": [{
+            "nombreestudiante": "Nicolle",
+            "apellidoestudiante": "Fragoso",
+            "correoestudiante": "nifragosol@correo.udistrital.edu.co",
+            "codestudiante": "20212104103",
+            "sesiones": 9,
+            "horas": 41,
+            "periodo": "27/02/22 - 05/03/22",
+            "obra": "La casa de Bernarda Alba"
+        },
+        {
+            "nombreestudiante": "Christian",
+            "apellidoestudiante": "Caro",
+            "correoestudiante": "chcarov@correo.udistrital.edu.co",
+            "codestudiante": "20181020027",
+            "sesiones": 6,
+            "horas": 21,
+            "periodo": "27/02/22 - 05/03/22",
+            "obra": "La casa de Bernarda Alba"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 2,
+    "links": [{
+            "rel": "self",
+            "href": "http://localhost:8089/ords/final_bases/travel_expenses/students"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://localhost:8089/ords/final_bases/metadata-catalog/travel_expenses/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://localhost:8089/ords/final_bases/travel_expenses/students"
+        }
+    ]
+}

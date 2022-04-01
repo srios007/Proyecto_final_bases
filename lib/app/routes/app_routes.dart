@@ -10,6 +10,7 @@ abstract class Routes {
   static const TRAVEL_EXPENSES = _Paths.TRAVEL_EXPENSES;
   static const CERTIFICATES = _Paths.CERTIFICATES;
   static const CERTIFICATES_DETAIL = _Paths.CERTIFICATES_DETAIL;
+  static const DKGFSD = _Paths.DKGFSD;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const TRAVEL_EXPENSES = '/travel-expenses';
   static const CERTIFICATES = '/certificates';
   static const CERTIFICATES_DETAIL = '/certificates-detail';
+  static const DKGFSD = '/dkgfsd';
 }

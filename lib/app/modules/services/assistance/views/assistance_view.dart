@@ -151,7 +151,7 @@ class StudentsListView extends StatelessWidget {
               width: Get.width,
               height: Get.height,
               child: ListView.builder(
-                itemCount: controller.students.length,
+                itemCount: controller.homeController.estudiante!.items!.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -188,7 +188,8 @@ class StudentsListView extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     Text(
-                                      controller.students[index].name!,
+                                      '${controller.homeController.estudiante!.items![index].nombreestudiante!} '
+                                      '${controller.homeController.estudiante!.items![index].apellidoestudiante!}',
                                       style: const TextStyle(
                                         color: Palette.darkBlue,
                                         fontSize: 30,
@@ -202,7 +203,8 @@ class StudentsListView extends StatelessWidget {
                                   onChanged: (value) {
                                     controller.onChanged(index);
                                   },
-                                  value: controller.students[index].isSelected!,
+                                  value: controller.homeController.estudiante!
+                                      .items![index].isSelected!,
                                 )
                               ],
                             ),
@@ -315,8 +317,8 @@ class SelectedStudentsListView extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          controller
-                                              .selectedStudents[index].name!,
+                                          '${controller.selectedStudents[index].nombreestudiante!} '
+                                          '${controller.selectedStudents[index].apellidoestudiante!}',
                                           style: const TextStyle(
                                             color: Palette.darkBlue,
                                             fontSize: 30,

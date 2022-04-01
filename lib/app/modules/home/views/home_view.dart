@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Spacer(),
                         Text(
-                          'Bienvenido al Módulo de Administración de Teatros',
+                          'Bienvenido ${controller.loginController.globalUser.nombreempleado} ${controller.loginController.globalUser.apellidoempleado} al Módulo de Administración de Teatros',
                           style: TextStyle(
                             fontSize: 48,
                             color: Palette.darkBlue,
@@ -85,4 +85,3 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
-

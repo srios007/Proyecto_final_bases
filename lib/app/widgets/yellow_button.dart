@@ -11,6 +11,7 @@ class YellowButton extends StatelessWidget {
     required this.onPressed,
     this.icon,
     this.width,
+    this.height,
     required this.isActive,
   }) : super(key: key);
 
@@ -19,15 +20,15 @@ class YellowButton extends StatelessWidget {
   Icon? icon;
   void Function() onPressed;
   double? width;
+  double? height;
   RxBool isActive;
-
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
         width: width ?? 500,
-        height: 55,
+        height: height ?? 55,
         child: MaterialButton(
           child: isLoading.value
               ? Container(
@@ -63,7 +64,7 @@ class YellowButton extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-          color: isActive.value ?Palette.yellow: Colors.grey,
+          color: isActive.value ? Palette.yellow : Colors.grey,
           elevation: 1,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(60)),

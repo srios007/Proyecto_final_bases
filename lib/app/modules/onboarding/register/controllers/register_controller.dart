@@ -1,8 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:proyecto_final_bases/app/models/empleado_model.dart';
+import 'package:proyecto_final_bases/app/models/providers/empleado_provider.dart';
 import 'package:proyecto_final_bases/app/routes/app_pages.dart';
 import 'package:proyecto_final_bases/app/services/auth_service.dart';
 import 'package:proyecto_final_bases/app/widgets/snackbars.dart';
+import 'package:proyecto_final_bases/app/widgets/yellow_button.dart';
 
 class RegisterController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -12,6 +15,13 @@ class RegisterController extends GetxController {
   TextEditingController phoneNumberController = TextEditingController();
   RxBool isLoading = false.obs;
   final key = GlobalKey<FormState>();
+  Empleado? empleado = Empleado();
+
+  @override
+  void onInit() {
+    getEmpleados();
+    super.onInit();
+  }
 
   String? validteId(String? _) {
     if (idController.text.isEmpty) {
@@ -24,6 +34,29 @@ class RegisterController extends GetxController {
   }
 
   register() async {
+    for (var element in empleado!.items!) {
+      if (element.correoempleado == emailController.text) {
+        Get.defaultDialog(
+          title: 'Error',
+          content: Column(
+            children: [
+              Text('El empleado ya existe'),
+              const SizedBox(height: 20),
+              YellowButton(
+                height: 30,
+                width: 200,
+                buttonText: 'Volver',
+                isLoading: false.obs,
+                onPressed: Get.back,
+                isActive: true.obs,
+              ),
+            ],
+          ),
+        );
+        return null;
+      }
+    }
+
     if (key.currentState!.validate()) {
       try {
         isLoading.value = true;
@@ -58,6 +91,10 @@ class RegisterController extends GetxController {
         isLoading.value = false;
       }
     }
+  }
+
+  getEmpleados() async {
+    empleado = await empleadoProvider.getEmpleados();
   }
 
   goToLogin() {
