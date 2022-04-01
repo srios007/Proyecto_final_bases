@@ -163,7 +163,7 @@ class StudentsListView extends StatelessWidget {
                       width: (Get.width / 3),
                       child: Center(
                         child: Text(
-                          'Sección',
+                          'Sesiones',
                           style: const TextStyle(
                             color: Palette.yellow,
                             fontSize: 30,
@@ -245,7 +245,7 @@ class StudentsListView extends StatelessWidget {
                               height: 60,
                               child: Center(
                                 child: Text(
-                                  controller.homeController.travel!.items![index].periodo!,
+                                  controller.homeController.travel!.items![index].sesiones.toString(),
                                   style: const TextStyle(
                                     color: Palette.darkBlue,
                                     fontSize: 30,

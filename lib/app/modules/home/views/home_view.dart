@@ -41,16 +41,17 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Spacer(),
                         Text(
-                          'Bienvenido ${controller.loginController.globalUser.nombreempleado} ${controller.loginController.globalUser.apellidoempleado} al Módulo de Administración de Teatros',
+                          'Bienvenido ${controller.loginController.globalUser!.items![0].nombreempleado ?? ''} ${controller.loginController.globalUser!.items![0].apellidoempleado ?? ""} docente de ${controller.loginController.globalUser!.items![0].nomunidad ?? ""} al Módulo de Administración de Teatros',
                           style: TextStyle(
                             fontSize: 48,
                             color: Palette.darkBlue,
                             fontWeight: FontWeight.bold,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         Container(
                           width: 500,
-                          height: 500,
+                          height: 450,
                           child: Image.asset(
                             imageReferences.home,
                             fit: BoxFit.fill,

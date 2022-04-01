@@ -3,6 +3,7 @@ import 'dart:html' as html;
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
 import 'package:proyecto_final_bases/app/models/play.dart';
+import 'package:proyecto_final_bases/app/models/providers/obra_provider.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -95,7 +96,8 @@ class CertificatesController extends GetxController {
   }
 
   goToDetail() async {
-    Get.toNamed(Routes.CERTIFICATES_DETAIL);
+    obraProvider.getObra();
+    // Get.toNamed(Routes.CERTIFICATES_DETAIL);
   }
 
   generatePDF(Student student) async {

@@ -1,0 +1,29 @@
+{
+    "items": [{
+            "titulo": "Romeo y Julieta"
+        },
+        {
+            "titulo": "Hamlet"
+        },
+        {
+            "titulo": "La Celestina"
+        }
+    ],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 3,
+    "links": [{
+            "rel": "self",
+            "href": "http://localhost:8089/ords/final_bases/certificates/obras"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://localhost:8089/ords/final_bases/metadata-catalog/certificates/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://localhost:8089/ords/final_bases/certificates/obras"
+        }
+    ]
+}

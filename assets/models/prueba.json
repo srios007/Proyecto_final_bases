@@ -1,0 +1,29 @@
+{
+    "items": [{
+        "codunidad": "12",
+        "codempleado": "1",
+        "nombreempleado": "Santiago",
+        "apellidoempleado": "Rios",
+        "cedulaempleado": "1020034567",
+        "celularempleado": "3118165625",
+        "correoempleado": "noreplyemailforliz@gmail.com",
+        "nomunidad": "Ingeniería de Sistemas"
+    }],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [{
+            "rel": "self",
+            "href": "http://localhost:8089/ords/final_bases/register/empleado/noreplyemailforliz@gmail.com"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://localhost:8089/ords/final_bases/metadata-catalog/register/empleado/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://localhost:8089/ords/final_bases/register/empleado/noreplyemailforliz@gmail.com"
+        }
+    ]
+}

@@ -1,15 +1,15 @@
 import 'dart:convert';
-import '../estudiante_model.dart';
 import 'package:http/http.dart' as http;
+import '../obra_model.dart';
 
-class EstudianteProvider {
-  Future<Estudiante?> getEstudiante() async {
+class ObraProvider {
+  Future<Obra?> getObra() async {
     final header = {
       "Content-Type": "application/json",
     };
 
     var response = await http.get(
-      Uri.parse("http://localhost:8089/ords/final_bases/assistence/students/"),
+      Uri.parse("http://localhost:8089/ords/final_bases/certificates/obras"),
       headers: header,
     );
 
@@ -18,8 +18,8 @@ class EstudianteProvider {
     } else {
       throw response.body;
     }
-    return Estudiante.fromJson(json.decode(response.body));
+    return Obra.fromJson(json.decode(response.body));
   }
 }
 
-EstudianteProvider estudianteProvider = EstudianteProvider();
+ObraProvider obraProvider = ObraProvider();
