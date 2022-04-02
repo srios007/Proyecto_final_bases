@@ -175,8 +175,7 @@ class StudentsListView extends StatelessWidget {
               width: Get.width,
               height: Get.height,
               child: ListView.builder(
-                itemCount: controller
-                    .playsList[controller.position.value].students!.length,
+                itemCount: controller.actor!.items!.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -213,10 +212,7 @@ class StudentsListView extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     Text(
-                                      controller
-                                          .playsList[controller.position.value]
-                                          .students![index]
-                                          .name!,
+                                      '${controller.actor!.items![index].nombreestudiante!} ${controller.actor!.items![index].apellidoestudiante!}',
                                       style: const TextStyle(
                                         color: Palette.darkBlue,
                                         fontSize: 30,
@@ -231,9 +227,8 @@ class StudentsListView extends StatelessWidget {
                                   buttonText: 'Generar certificado',
                                   isLoading: false.obs,
                                   onPressed: () {
-                                    controller.generateLiquidation(controller
-                                        .playsList[controller.position.value]
-                                        .students![index]);
+                                    controller.generateLiquidation(
+                                        controller.actor!.items![index]);
                                   },
                                   isActive: true.obs,
                                 )
@@ -269,7 +264,7 @@ class PlaysPlayed extends StatelessWidget {
               width: Get.width,
               height: Get.height,
               child: ListView.builder(
-                itemCount: controller.playsList.length,
+                itemCount: controller.homeController.obra!.items!.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -306,7 +301,8 @@ class PlaysPlayed extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     Text(
-                                      controller.playsList[index].playName!,
+                                      controller.homeController.obra!
+                                          .items![index].titulo!,
                                       style: const TextStyle(
                                         color: Palette.darkBlue,
                                         fontSize: 30,
@@ -322,6 +318,7 @@ class PlaysPlayed extends StatelessWidget {
                                   isLoading: false.obs,
                                   onPressed: () {
                                     controller.position.value = index;
+                                    controller.setActor(index);
                                   },
                                   isActive: true.obs,
                                 )

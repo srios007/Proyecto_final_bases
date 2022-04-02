@@ -75,15 +75,46 @@ class CertificatesDetailView extends GetView<CertificatesDetailController> {
                                     title: 'Ingrese el código del estudiante',
                                     hintText: 'Santiago',
                                     width: Get.width * 0.8,
-                                    controller: controller.nameController,
+                                    controller: controller.codeController,
                                   ),
                                   Obx(
-                                    () => _DropdownField(
-                                      title: 'Obra',
-                                      dropdownItems: controller.playsType(),
-                                      onChanged: controller.chancgeTypeStreet,
-                                      selectedValue: controller.play.value,
-                                    ),
+                                    () => controller.isLoading.value
+                                        ? const CircularProgressIndicator()
+                                        : controller.empty.value
+                                            ? Text(
+                                                'No hay estudiantes con este código',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            : Column(
+                                                children: [
+                                                  Text(
+                                                    'Nombre: ${controller.search!.items![0].nombreestudiante}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Apellido: ${controller.search!.items![0].apellidoestudiante}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Obra: ${controller.search!.items![0].titulo}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Personaje: ${controller.search!.items![0].nompersonaje}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                   )
                                 ],
                               ),
@@ -107,7 +138,7 @@ class CertificatesDetailView extends GetView<CertificatesDetailController> {
                                   width: Get.width * 0.4,
                                   buttonText: 'Buscar',
                                   isLoading: false.obs,
-                                  onPressed: () {},
+                                  onPressed: controller.searchStudent ,
                                   isActive: true.obs,
                                 ),
                               ),
@@ -122,7 +153,7 @@ class CertificatesDetailView extends GetView<CertificatesDetailController> {
                                   buttonText: 'Generar certificado',
                                   isLoading: false.obs,
                                   onPressed: () {
-                                    controller.generateLiquidation();
+                                    controller.generateCertificate();
                                     customDialogs.showMessageDialog(
                                       Get.context,
                                       "¡Listo!, tu pdf fue generdo con éxito",
@@ -141,86 +172,6 @@ class CertificatesDetailView extends GetView<CertificatesDetailController> {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _DropdownField extends StatelessWidget {
-  const _DropdownField({
-    Key? key,
-    required this.title,
-    required this.dropdownItems,
-    required this.onChanged,
-    required this.selectedValue,
-  }) : super(key: key);
-
-  final String title;
-  final List<DropdownMenuItem<String>> dropdownItems;
-  final void Function(String?) onChanged;
-  final String selectedValue;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width * 0.8,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-          Stack(
-            children: [
-              Container(
-                height: 50,
-                width: Get.width * 0.8,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              Container(
-                width: Get.width * 0.8,
-                height: 50,
-                padding: const EdgeInsets.only(left: 20, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: Palette.lightGray,
-                    width: 2,
-                  ),
-                ),
-                child: DropdownButton<String>(
-                  underline: const SizedBox.shrink(),
-                  value: selectedValue,
-                  isExpanded: true,
-                  icon: const Icon(CupertinoIcons.chevron_down),
-                  iconEnabledColor: Palette.lightGray,
-                  iconSize: 20,
-                  elevation: 0,
-                  style: const TextStyle(
-                    color: Palette.darkBlue,
-                    fontSize: 16,
-                  ),
-                  dropdownColor: Colors.white,
-                  focusColor: Colors.white,
-                  onChanged: onChanged,
-                  items: dropdownItems,
-                ),
-              ),
-            ],
           ),
         ],
       ),

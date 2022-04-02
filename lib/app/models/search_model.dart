@@ -1,4 +1,4 @@
-class Prueba {
+class Search {
   List<Items>? items;
   bool? hasMore;
   int? limit;
@@ -6,7 +6,7 @@ class Prueba {
   int? count;
   List<Links>? links;
 
-  Prueba(
+  Search(
       {this.items,
       this.hasMore,
       this.limit,
@@ -14,7 +14,7 @@ class Prueba {
       this.count,
       this.links});
 
-  Prueba.fromJson(Map<String, dynamic> json) {
+  Search.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
@@ -50,46 +50,34 @@ class Prueba {
 }
 
 class Items {
-  String? codunidad;
-  String? codempleado;
-  String? nombreempleado;
-  String? apellidoempleado;
-  String? cedulaempleado;
-  String? celularempleado;
-  String? correoempleado;
-  String? nomunidad;
+  String? nombreestudiante;
+  String? apellidoestudiante;
+  String? codestudiante;
+  String? titulo;
+  String? nompersonaje;
 
   Items(
-      {this.codunidad,
-      this.codempleado,
-      this.nombreempleado,
-      this.apellidoempleado,
-      this.cedulaempleado,
-      this.celularempleado,
-      this.correoempleado,
-      this.nomunidad});
+      {this.nombreestudiante,
+      this.apellidoestudiante,
+      this.codestudiante,
+      this.titulo,
+      this.nompersonaje});
 
   Items.fromJson(Map<String, dynamic> json) {
-    codunidad = json['codunidad'];
-    codempleado = json['codempleado'];
-    nombreempleado = json['nombreempleado'];
-    apellidoempleado = json['apellidoempleado'];
-    cedulaempleado = json['cedulaempleado'];
-    celularempleado = json['celularempleado'];
-    correoempleado = json['correoempleado'];
-    nomunidad = json['nomunidad'];
+    nombreestudiante = json['nombreestudiante'];
+    apellidoestudiante = json['apellidoestudiante'];
+    codestudiante = json['codestudiante'];
+    titulo = json['titulo'];
+    nompersonaje = json['nompersonaje'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['codunidad'] = codunidad;
-    data['codempleado'] = codempleado;
-    data['nombreempleado'] = nombreempleado;
-    data['apellidoempleado'] = apellidoempleado;
-    data['cedulaempleado'] = cedulaempleado;
-    data['celularempleado'] = celularempleado;
-    data['correoempleado'] = correoempleado;
-    data['nomunidad'] = nomunidad;
+    data['nombreestudiante'] = nombreestudiante;
+    data['apellidoestudiante'] = apellidoestudiante;
+    data['codestudiante'] = codestudiante;
+    data['titulo'] = titulo;
+    data['nompersonaje'] = nompersonaje;
     return data;
   }
 }

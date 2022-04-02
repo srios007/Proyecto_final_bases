@@ -48,9 +48,9 @@ class TravelExpensesController extends GetxController {
                 'Liquidación de viáticos de los estudiantes de la obra de teatro\n\n\n'
                 'Titulo de la Obra: ${homeController.travel!.items![0].obra}\n'
                 'Periodo: ${homeController.travel!.items![0].periodo}  \n'
-                '$allNames \n',
-                // '${homeController.loginController.globalUser.nombreempleado} ${homeController.loginController.globalUser.apellidoempleado}, '
-                // '${homeController.loginController.globalUser.cedulaempleado}',
+                '$allNames \n'
+                '${homeController.loginController.globalUser!.items![0].nombreempleado} ${homeController.loginController.globalUser!.items![0].apellidoempleado}, '
+                '${homeController.loginController.globalUser!.items![0].cedulaempleado}, ${homeController.loginController.globalUser!.items![0].nomunidad} ',
                 style: pw.TextStyle(
                   font: font,
                   fontSize: 20,

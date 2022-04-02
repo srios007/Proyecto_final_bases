@@ -1,0 +1,26 @@
+{
+    "items": [{
+        "nombreestudiante": "Camilo",
+        "apellidoestudiante": "Martínez",
+        "codestudiante": "20161098124",
+        "titulo": "Romeo y Julieta",
+        "nompersonaje": "Romeo Montesco"
+    }],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [{
+            "rel": "self",
+            "href": "http://localhost:8089/ords/final_bases/certificates/estudiantesdetail/20161098124"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://localhost:8089/ords/final_bases/metadata-catalog/certificates/estudiantesdetail/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://localhost:8089/ords/final_bases/certificates/estudiantesdetail/20161098124"
+        }
+    ]
+}

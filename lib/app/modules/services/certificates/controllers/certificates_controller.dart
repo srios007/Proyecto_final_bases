@@ -2,11 +2,15 @@ import 'dart:typed_data';
 import 'dart:html' as html;
 import 'package:get/get.dart';
 import 'package:printing/printing.dart';
+import 'package:proyecto_final_bases/app/models/actores_model.dart';
 import 'package:proyecto_final_bases/app/models/play.dart';
+import 'package:proyecto_final_bases/app/models/providers/actores_provider.dart';
 import 'package:proyecto_final_bases/app/models/providers/obra_provider.dart';
+import 'package:proyecto_final_bases/app/models/providers/search_provider.dart';
 import 'package:proyecto_final_bases/app/models/student.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:proyecto_final_bases/app/modules/home/controllers/home_controller.dart';
 import 'package:proyecto_final_bases/app/routes/app_pages.dart';
 
 class CertificatesController extends GetxController {
@@ -15,62 +19,24 @@ class CertificatesController extends GetxController {
   RxBool isActive = false.obs;
   RxBool firstPlay = true.obs;
   RxInt position = 0.obs;
-  List<Play> playsList = [
-    Play(
-      playName: 'Romeo y Julieta',
-      students: [
-        Student(
-          id: '1010',
-          email: 'Santiago@gmail.com',
-          name: 'Santiago Rios',
-          section: 'Intro',
-          period: '27-FEB-22 - 05-MAR-22',
-          sessions: 2,
-          hours: 2,
-          isSelected: false.obs,
-          play: 'Romeo y Julieta',
-        ),
-      ],
-    ),
-    Play(
-      playName: 'La Celestina',
-      students: [
-        Student(
-          id: '2124',
-          email: 'jorge@gmail.com',
-          name: 'Jorge Bohórquez',
-          section: 'Intermedio',
-          period: '27-FEB-22 - 05-MAR-22',
-          sessions: 3,
-          hours: 1,
-          isSelected: false.obs,
-          play: 'La Celestina',
-        ),
-      ],
-    ),
-    Play(
-      playName: 'Don Juan Tenorio',
-      students: [
-        Student(
-          id: '3453',
-          email: 'jmostosq@gmail.com',
-          name: 'Juan Manuel Ostos',
-          section: 'Final',
-          period: '27-FEB-22 - 05-MAR-22',
-          sessions: 4,
-          hours: 3,
-          isSelected: false.obs,
-          play: 'Don Juan Tenorio',
-        ),
-      ],
-    ),
-  ];
+  HomeController homeController = Get.find();
+  Actor? actor = Actor();
+  Items item = Items();
 
   List<Student> selectedStudents = [];
 
   @override
   void onInit() {
+    setActor(0);
     super.onInit();
+  }
+
+  setActor(int position) async {
+    isLoading.value = true;
+    actor = await actorProvider
+        .getEmpleado(homeController.obra!.items![position].titulo!);
+    
+    isLoading.value = false;
   }
 
   choosePlay(bool isFirst) {
@@ -91,16 +57,15 @@ class CertificatesController extends GetxController {
     // }
   }
 
-  generateLiquidation(Student student) async {
+  generateLiquidation(Items student) async {
     await generatePDF(student);
   }
 
   goToDetail() async {
-    obraProvider.getObra();
-    // Get.toNamed(Routes.CERTIFICATES_DETAIL);
+    Get.toNamed(Routes.CERTIFICATES_DETAIL);
   }
 
-  generatePDF(Student student) async {
+  generatePDF(Items student) async {
     final pdf = pw.Document();
 
     final font = await PdfGoogleFonts.nunitoExtraLight();
@@ -114,7 +79,7 @@ class CertificatesController extends GetxController {
               pw.Text(
                 'Decanatura de la Facultad de Artes\n\n\n'
                 'Certificado de participación\n\n\n'
-                'El estudiante: ${student.name}, participó en la obra: ${student.play}, con un total de horas de: ${student.hours}\n',
+                'El estudiante: ${student.nombreestudiante} ${student.apellidoestudiante}, participó en la obra: ${student.titulo},\n',
                 style: pw.TextStyle(
                   font: font,
                   fontSize: 20,

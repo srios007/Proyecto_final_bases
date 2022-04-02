@@ -1,0 +1,24 @@
+{
+    "items": [{
+        "nombreestudiante": "Camilo",
+        "apellidoestudiante": "Martínez",
+        "titulo": "Romeo y Julieta"
+    }],
+    "hasMore": false,
+    "limit": 25,
+    "offset": 0,
+    "count": 1,
+    "links": [{
+            "rel": "self",
+            "href": "http://localhost:8089/ords/final_bases/certificates/estudiantes/Romeo%20y%20Julieta"
+        },
+        {
+            "rel": "describedby",
+            "href": "http://localhost:8089/ords/final_bases/metadata-catalog/certificates/estudiantes/item"
+        },
+        {
+            "rel": "first",
+            "href": "http://localhost:8089/ords/final_bases/certificates/estudiantes/Romeo%20y%20Julieta"
+        }
+    ]
+}
